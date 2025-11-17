@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" ?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <TypeLibraryGuid>8742b33b-4573-44e4-8ea2-f1b2d17c6cce</TypeLibraryGuid>
+    <ClassGuid>9da0ce26-7baf-4a1b-8186-d782f64cdd5a</ClassGuid>
+	<ClassContextGuid>2c8515d8-e91f-49c1-be2d-261c8b936f1a</ClassContextGuid>
+    <ClassFrameGuid>cd4ac1f9-6491-479f-91e7-f43d5bb04022</ClassFrameGuid>
+	<ClassSettingsFrameGuid>9e9febdb-03e1-432f-8e36-7c28e4ada598</ClassSettingsFrameGuid>
+    <PluginName>LatchMath</PluginName>
+    <PluginDisplayName>Latch math - scalar</PluginDisplayName>
+    <PluginDescription>Description</PluginDescription>
+    <PluginVendor>N/A</PluginVendor>
+    <PluginVersionMajor>1</PluginVersionMajor>
+    <PluginVersionMinor>0</PluginVersionMinor>
+    <PluginVersionRelease>0</PluginVersionRelease>
+    <PluginCopyright>Copyright © MyCompany LLC</PluginCopyright>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <Midl />
+    <Midl />
+    <ClCompile>
+      <PreprocessorDefinitions>_LIB_NAME=$(PluginName);_PLUGIN_NAME=$(PluginName);_PLUGIN_DISPLAY_NAME=$(PluginDisplayName);_PLUGIN_VERSION_MAJOR=$(PluginVersionMajor);_PLUGIN_VERSION_MINOR=$(PluginVersionMinor);_PLUGIN_VERSION_RELEASE=$(PluginVersionRelease);_PLUGIN_VENDOR=$(PluginVendor);_PLUGIN_DESCRIPTION=$(PluginDescription);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Midl>
+      <PreprocessorDefinitions>_CLASS_GUID=$(ClassGuid);_CLASS_CONTEXT_GUID=$(ClassContextGuid);_CLASS_FRAME_GUID=$(ClassFrameGuid);_CLASS_SETTINGS_FRAME_GUID=$(ClassSettingsFrameGuid);_LIB_GUID=$(TypeLibraryGuid);_LIB_NAME=$(PluginName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="TypeLibraryGuid">
+      <Value>$(TypeLibraryGuid)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="ClassGuid">
+      <Value>$(ClassGuid)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="ClassFrameGuid">
+      <Value>$(ClassFrameGuid)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+	<BuildMacro Include="ClassSettingsFrameGuid">
+      <Value>$(ClassSettingsFrameGuid)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginName">
+      <Value>$(PluginName)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginDisplayName">
+      <Value>$(PluginDisplayName)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginDescription">
+      <Value>$(PluginDescription)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginVendor">
+      <Value>$(PluginVendor)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PluginVersionMajor">
+      <Value>$(PluginVersionMajor)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginVersionMinor">
+      <Value>$(PluginVersionMinor)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginVersionRelease">
+      <Value>$(PluginVersionRelease)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PluginCopyright">
+      <Value>$(PluginCopyright)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

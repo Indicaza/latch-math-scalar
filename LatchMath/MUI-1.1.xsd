@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://mui.dewesoft.com/schema/1.1"
+           xmlns="https://mui.dewesoft.com/schema/1.1"
+           elementFormDefault="qualified"
+           version="1.1">
+
+  <xs:complexType name="treeViewItemType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="TreeViewItem" type="treeViewItemType" />
+    </xs:sequence>
+    <xs:attribute name="Header" type="xs:string"></xs:attribute>
+    <xs:attribute name="IsSelected" type="xs:boolean"></xs:attribute>
+    <xs:attribute name="IsExpanded" type="xs:boolean"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="layoutType" abstract="true">
+    <!--a type that contains multiple (or none) child elements (layouts and controls)-->
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="layout" />
+      <xs:group ref="controls" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="singleChild" abstract="true">
+    <!--a type that contains multiple (or none) child elements (layouts and controls)-->
+    <xs:choice minOccurs="0" maxOccurs="1">
+      <xs:group ref="layout" />
+      <!--<xs:group ref="controls" />-->
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="windowType">
+    <xs:complexContent>
+      <xs:extension base="singleChild">
+        <xs:attributeGroup ref="baseProps" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="GridLayout" type="gridLayoutType">
+    <xs:annotation>
+      <xs:documentation>Arranges its child controls in a tabular structure of rows and columns. You can specify cellWidth on GridLayoutCell and rowHeight on GridLayoutRow proportionally based on width and height of grid. By default each cell and row size are even.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="StackPanel" type="stackPanelType"/>
+
+  <xs:element name="Window" type="windowType"/>
+
+  <xs:element name="Dialog">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="windowType">
+          <xs:attribute name="Title" type="xs:string"/>
+          <xs:attribute name="BorderStyle">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="None" />
+                <xs:enumeration value="Sizable" />
+                <xs:enumeration value="Fixed" />
+                <xs:enumeration value="Dialog" />
+                <xs:enumeration value="ToolWindow" />
+                <xs:enumeration value="FixedToolWindow" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!--LAYOUT START-->
+  <xs:group name="layout">
+    <xs:choice>
+      <xs:element name="Grid" type="gridType" />
+      <xs:element name="GridLayout" type="gridLayoutType">
+        <xs:annotation>
+          <xs:documentation>Arranges its child controls in a tabular structure of rows and columns. You can specify cellWidth on GridLayoutCell and rowHeight on GridLayoutRow proportionally based on width and height of grid. By default each cell and row size are even.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StackPanel" type="stackPanelType" />
+      <xs:element name="CaptionPanel" type="captionPanelType" />
+    </xs:choice>
+  </xs:group>
+
+  <!--GRID START-->
+  <xs:complexType name="gridType">
+    <xs:complexContent>
+      <xs:extension base="layoutType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Grid.ColumnDefinitions" maxOccurs="1">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="ColumnDefinition">
+                  <xs:complexType>
+                    <xs:attribute name="Width" type="sizeAndAuto" use="required"/>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Grid.RowDefinitions" maxOccurs="1">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="RowDefinition">
+                  <xs:complexType>
+                    <xs:attribute name="Height" type="sizeAndAuto" use="required" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+          <xs:group ref="layout" />
+          <xs:group ref="controls" />
+        </xs:choice>
+        <xs:attributeGroup ref="baseProps" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--GRID END-->
+
+  <!--GRIDLAYOUT START-->
+  <xs:complexType name="gridLayoutType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Grid.ColumnDefinitions">
+      </xs:element>
+      <xs:element name="Grid.RowDefinitions">
+      </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="layout" />
+        <xs:group ref="controls" />
+      </xs:choice>
+    </xs:choice>
+    <xs:attributeGroup ref="baseProps" />
+  </xs:complexType>
+  <!--GRIDLAYOUT END-->
+
+  <!-- Caption panel -->
+  <xs:complexType name="captionPanelType">
+    <xs:complexContent>
+      <xs:extension base="singleChild">
+        <xs:attributeGroup ref="baseProps" />
+        <xs:attribute name="Title">
+          <xs:simpleType>
+            <xs:restriction base="xs:string"/>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- Caption panel end-->
+
+  <!--STACKPANEL START-->
+  <xs:complexType name="stackPanelType">
+    <xs:complexContent>
+      <xs:extension base="layoutType">
+        <xs:attributeGroup ref="baseProps" />
+        <xs:attribute name="Spacing" type="xs:unsignedInt" />
+        <xs:attribute name="Orientation">
+          <xs:annotation>
+            <xs:documentation>The direction by which child elements are stacked.</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Vertical">
+                <xs:annotation>
+                  <xs:documentation>Stacks components vertically.</xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+              <xs:enumeration value="Horizontal">
+                <xs:annotation>
+                  <xs:documentation>Stacks components horizontally.</xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="VerticalAlignment">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Top" />
+              <xs:enumeration value="Bottom" />
+              <xs:enumeration value="Center" />
+              <xs:enumeration value="Stretch" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="HorizontalAlignment">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Left" />
+              <xs:enumeration value="Center" />
+              <xs:enumeration value="Right" />
+              <xs:enumeration value="Stretch" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--STACKPANEL END-->
+  <!--LAYOUT END-->
+
+
+  <!--CONTROLS START-->
+  <xs:group name="controls">
+    <xs:choice>
+      <!--for custom controls-->
+      <xs:any namespace="##other" processContents="skip" />
+
+      <xs:element name="DSDrawGrid">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attributeGroup ref="baseProps" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+
+      <!-- BUTTON START -->
+      <xs:element name="Button">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attributeGroup ref="baseProps" />
+              <xs:attribute name="Label" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>The button text label.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <!-- BUTTON END -->
+
+      <!-- ICONBUTTON START -->
+      <xs:element name="IconButton">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attributeGroup ref="baseProps" />
+              <xs:attribute name="IconName" type="iconNames" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <!-- ICONBUTTON END -->
+
+      <!-- CHECKBOX START -->
+      <xs:element name="CheckBox">
+        <xs:complexType>
+          <xs:attributeGroup ref="baseProps" />
+          <xs:attribute name="Label" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Checkbox label text.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="IsChecked" type="boolean">
+            <xs:annotation>
+              <xs:documentation>Checkbox default state.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!-- CHECKBOX END -->
+
+      <!--CHECKLISTBOX START-->
+      <xs:element name="CheckListBox">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CheckListBoxItem">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="IsChecked" type="boolean" />
+                    <xs:attribute name="Text" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+          <xs:attributeGroup ref="baseProps"/>
+          <xs:attribute name="SelectionMode">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Single"/>
+                <xs:enumeration value="Extended"/>
+                <xs:enumeration value="Multiple"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!--CHECKLISTBOX END-->
+
+      <!-- COMBOBOX START -->
+      <xs:element name="ComboBox">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ComboBoxItem">
+              <xs:annotation>
+                <xs:documentation>Combo box option.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="IsSelected" type="boolean" />
+                    <xs:attribute name="Label" type="string_integer">
+                      <xs:annotation>
+                        <xs:documentation>Human readable description of the option.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+          <xs:attributeGroup ref="baseProps" />
+          <xs:attribute name="IsEditable" type="boolean" />
+        </xs:complexType>
+      </xs:element>
+      <!--COMBOBOX END-->
+
+      <!--IMAGE START-->
+      <xs:element name="Image">
+        <xs:complexType>
+          <xs:attributeGroup ref="baseProps"/>
+          <xs:attribute name="Title" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The image on hover display title.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Source" type="xs:anyURI">
+            <xs:annotation>
+              <xs:documentation>The source for the image.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="VerticalAlign">
+            <xs:annotation>
+              <xs:documentation>How to align the image along the __vertical__ axis.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Top"/>
+                <xs:enumeration value="Bottom"/>
+                <xs:enumeration value="Center"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="HorizontalAlign">
+            <xs:annotation>
+              <xs:documentation>How to align the image along the __horizontal__ axis.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Right"/>
+                <xs:enumeration value="Left"/>
+                <xs:enumeration value="Center"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="Stretch">
+            <xs:annotation>
+              <xs:documentation>How an image should be stretched to fill the desired dimensions.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="None" />
+                <xs:enumeration value="Fill" />
+                <xs:enumeration value="Uniform" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!--IMAGE END-->
+
+      <!-- MEMO -->
+      <xs:element name="Memo">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attributeGroup ref="baseProps" />
+              <xs:attribute name="Text" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Memo default text.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attribute name="IsReadOnly" type="boolean">
+                <xs:annotation>
+                  <xs:documentation>Defines whether the memo can be edited by user.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <!-- MEMO END -->
+
+
+      <!-- SPLITTER -->
+      <xs:element name="Splitter">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attributeGroup ref="baseProps" />
+              <xs:attribute name="HasCaption" type="boolean">
+                <xs:annotation>
+                  <xs:documentation>Determines whether control has caption.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <!-- SPLITTER END -->
+
+      <!--DATETIMEPICKER START-->
+      <xs:element name="DateTimePicker">
+        <xs:complexType>
+          <xs:attributeGroup ref="baseProps" />
+          <xs:attribute name="Date" type="xs:string" />
+          <xs:attribute name="Time" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+      <!--DATETIMEPICKER END-->
+
+      <!--LABEL START-->
+      <xs:element name="Label">
+        <xs:complexType>
+          <xs:attributeGroup ref="baseProps" />
+          <xs:attribute name="Text" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The text to display.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="TextAlign">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Left" />
+                <xs:enumeration value="Center" />
+                <xs:enumeration value="Right" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TextVerticalAlign">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Top" />
+                <xs:enumeration value="Center" />
+                <xs:enumeration value="Bottom" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="ValidateType">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="None" />
+                <xs:enumeration value="Integer" />
+                <xs:enumeration value="Double" />
+                <xs:enumeration value="IP" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!--LABEL END-->
+
+      <!--LISTBOX START-->
+      <xs:element name="ListBox">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ListBoxItem">
+              <xs:annotation>
+                <xs:documentation>List box option.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:attribute name="Text" type="xs:string"/>
+                <xs:attribute name="IsSelected" type="xs:boolean"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+          <xs:attributeGroup ref="baseProps"/>
+          <xs:attribute name="SelectionMode">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Single"/>
+                <xs:enumeration value="Extended"/>
+                <xs:enumeration value="Multiple"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!--LISTBOX END-->
+
+      <!--TABS START-->
+      <xs:element name="TabControl">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="TabItem">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="layoutType">
+                    <xs:attributeGroup ref="baseProps" />
+                    <xs:attribute name="Header" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>Text shown on the tab pane button.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="IsSelected" type="boolean">
+                      <xs:annotation>
+                        <xs:documentation>Tab is active by default.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+          <xs:attributeGroup ref="baseProps" />
+        </xs:complexType>
+      </xs:element>
+      <!--TABS END-->
+
+      <!--TEXTBLOCK START-->
+      <xs:element name="TextBlock">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attributeGroup ref="baseProps" />
+              <xs:attribute name="Text" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>The text of the control.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attribute name="TextVerticalAlign">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="Top" />
+                    <xs:enumeration value="Bottom" />
+                    <xs:enumeration value="Center" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+              <xs:attribute name="TextAlign">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="Left" />
+                    <xs:enumeration value="Right" />
+                    <xs:enumeration value="Center" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <!--TEXTBLOCK END-->
+
+      <!--TEXTBOX START-->
+      <xs:element name="TextBox">
+        <xs:complexType>
+          <xs:attributeGroup ref="baseProps" />
+          <xs:attribute name="Text" type="xs:string" />
+          <xs:attribute name="Numeric" type="boolean">
+            <xs:annotation>
+              <xs:documentation>If the input should be a numeric value.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Placeholder" type="xs:string" />
+          <xs:attribute name="MinValue" type="xs:float" />
+          <xs:attribute name="MaxValue" type="xs:float" />
+          <xs:attribute name="PasswordChar" type="xs:string" />
+          <xs:attribute name="TextHint" type="xs:string" />
+          <xs:attribute name="IsReadOnly" type="boolean" />
+          <xs:attribute name="VerticalContentAlignment">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Top" />
+                <xs:enumeration value="Bottom" />
+                <xs:enumeration value="Center" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="ValidateType">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="None" />
+                <xs:enumeration value="Integer" />
+                <xs:enumeration value="Double" />
+                <xs:enumeration value="IP" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="ChangeMode">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="KeyPress" />
+                <xs:enumeration value="LostFocusOrEnter" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!--TEXTBOX END-->
+
+      <!-- <xs:element name="RadioButton" type="radioButtonType" > -->
+      <!--RADIOBUTTON START-->
+      <xs:element name="RadioButton" >
+        <xs:complexType>
+          <xs:attributeGroup ref="baseProps" />
+          <xs:attribute name="IsChecked" type="boolean" />
+
+          <xs:attribute name="Label" type="string_integer">
+            <xs:annotation>
+              <xs:documentation>Human readable description of the option.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <!--RADIOBUTTON END-->
+
+      <!--SEARCHEDIT START-->
+      <xs:element name="SearchEdit">
+        <xs:complexType>
+          <xs:attributeGroup ref="baseProps" />
+          <xs:attribute name="Text" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+      <!--SEARCHEDIT END-->
+
+      <!-- TREEVIEW START-->
+      <xs:element name="TreeView">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="TreeViewItem" type="treeViewItemType" />
+          </xs:choice>
+          <xs:attributeGroup ref="baseProps"/>
+        </xs:complexType>
+      </xs:element>
+      <!-- TREEVIEW END -->
+
+    </xs:choice>
+  </xs:group>
+  <!--CONTROLS END-->
+
+
+  <!--ATTRIBUTES START-->
+  <!--MARGIN PROPERTIES START-->
+  <xs:attributeGroup name="marginProps">
+    <xs:attribute name="MarginTop" type="xs:integer" />
+    <xs:attribute name="MarginRight" type="xs:integer" />
+    <xs:attribute name="MarginBottom" type="xs:integer" />
+    <xs:attribute name="MarginLeft" type="xs:integer" />
+  </xs:attributeGroup>
+  <!--MARGIN PROPERTIES END-->
+  <!--PADDING PROPERTIES START-->
+  <xs:attributeGroup name="paddingProps">
+    <xs:attribute name="PaddingTop" type="xs:integer" />
+    <xs:attribute name="PaddingRight" type="xs:integer" />
+    <xs:attribute name="PaddingBottom" type="xs:integer" />
+    <xs:attribute name="PaddingLeft" type="xs:integer" />
+  </xs:attributeGroup>
+  <!--PADDING PROPERTIES END-->
+  <!--TEXT PROPERTIES START-->
+  <xs:attributeGroup name="textProps">
+    <xs:attribute name="Color" type="xs:string" />
+    <xs:attribute name="FontWeight" type="positiveInteger_fontWeight" />
+    <xs:attribute name="FontStyle" type="string_fontStyle" />
+    <xs:attribute name="FontFamily" type="xs:string" />
+    <xs:attribute name="FontSize" type="xs:integer" />
+  </xs:attributeGroup>
+  <!--TEXT PROPERTIES END-->
+  <!--BASE PROPERTIES START-->
+  <xs:attributeGroup name="baseProps">
+
+    <xs:attributeGroup ref="marginProps" />
+    <xs:attributeGroup ref="paddingProps" />
+    <xs:attributeGroup ref="textProps" />
+    <xs:attribute name="Name" type="xs:ID">
+      <xs:annotation>
+        <xs:documentation>The unique name of the control.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Width" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Left" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Top" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Height" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Background" type="xs:string" />
+
+    <xs:attribute name="Visibility" type="visibilityControl" />
+
+    <xs:attribute name="IsEnabled" type="boolean" />
+
+    <xs:attribute name="Grid.Row" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Grid.Column" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Grid.ColumnSpan" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Grid.RowSpan" type="xs:nonNegativeInteger" />
+    <xs:attribute name="Align" type="Align"/>
+  </xs:attributeGroup>
+  <!--BASE PROPERTIES END-->
+  <!--ATTRIBUTES END-->
+
+  <!--SIMPLE TYPES START-->
+  <xs:simpleType name="double_0-1">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positiveInteger_fontWeight">
+    <xs:union memberTypes="xs:positiveInteger fontWeight" />
+  </xs:simpleType>
+  <xs:simpleType name="string_fontStyle">
+    <xs:union memberTypes="xs:string fontStyle" />
+  </xs:simpleType>
+  <xs:simpleType name="string_integer">
+    <xs:union memberTypes="xs:string xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="sizeAndAuto">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:nonNegativeInteger" />
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Auto" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="^\d+%$" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="Align">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Fill" />
+      <xs:enumeration value="Left" />
+      <xs:enumeration value="Right" />
+      <xs:enumeration value="Bottom" />
+      <xs:enumeration value="Top" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="boolean">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="True" />
+      <xs:enumeration value="False" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="fontStyle">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Italic" />
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="Oblique" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="fontWeight">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="Bold" />
+      <xs:enumeration value="Bolder" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="visibilityControl">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Visible" />
+      <xs:enumeration value="Hidden" />
+      <xs:enumeration value="Collapsed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="iconNames">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADD" />
+      <xs:enumeration value="ANALYSE" />
+      <xs:enumeration value="ANGLE_DOWN" />
+      <xs:enumeration value="ANGLE_LEFT" />
+      <xs:enumeration value="ANGLE_RIGHT" />
+      <xs:enumeration value="ANGLE_UP" />
+      <xs:enumeration value="ARROW_BOTTOM" />
+      <xs:enumeration value="ANGLE_DOWN" />
+      <xs:enumeration value="ANGLE_LEFT" />
+      <xs:enumeration value="ANGLE_RIGHT" />
+      <xs:enumeration value="ANGLE_TOP" />
+      <xs:enumeration value="ANGLE_UP" />
+      <xs:enumeration value="BROWSE" />
+      <xs:enumeration value="CAMERA" />
+      <xs:enumeration value="CAR" />
+      <xs:enumeration value="CHECKBOX" />
+      <xs:enumeration value="CHECKMARK" />
+      <xs:enumeration value="CHECKRADIO" />
+      <xs:enumeration value="CURSOR" />
+      <xs:enumeration value="DAMPING" />
+      <xs:enumeration value="DATA" />
+      <xs:enumeration value="DELETE" />
+      <xs:enumeration value="DEWESOFT" />
+      <xs:enumeration value="DEWESOFT_BLACK" />
+      <xs:enumeration value="DROPDOWN" />
+      <xs:enumeration value="EDIT" />
+      <xs:enumeration value="EDIT_CURSOR" />
+      <xs:enumeration value="EQUALIZER" />
+      <xs:enumeration value="EXPORT" />
+      <xs:enumeration value="EXTENSION" />
+      <xs:enumeration value="FOLEROPEN" />
+      <xs:enumeration value="GEAR" />
+      <xs:enumeration value="GPS" />
+      <xs:enumeration value="HARMONICS" />
+      <xs:enumeration value="HOME" />
+      <xs:enumeration value="IMPORT" />
+      <xs:enumeration value="KEY" />
+      <xs:enumeration value="KEYBOARD" />
+      <xs:enumeration value="LIST" />
+      <xs:enumeration value="LOCK" />
+      <xs:enumeration value="MARKER" />
+      <xs:enumeration value="MAX" />
+      <xs:enumeration value="MENU" />
+      <xs:enumeration value="METER" />
+      <xs:enumeration value="MICROPHONE" />
+      <xs:enumeration value="NO_DATA" />
+      <xs:enumeration value="NONE" />
+      <xs:enumeration value="NOTE" />
+      <xs:enumeration value="POWERBTN" />
+      <xs:enumeration value="PROJCX" />
+      <xs:enumeration value="PROJXYZ" />
+      <xs:enumeration value="PROJYX" />
+      <xs:enumeration value="PROJYXZ" />
+      <xs:enumeration value="QUESTION" />
+      <xs:enumeration value="REDO" />
+      <xs:enumeration value="REFRESH" />
+      <xs:enumeration value="REMOVE" />
+      <xs:enumeration value="RMS" />
+      <xs:enumeration value="RULER" />
+      <xs:enumeration value="SAVE" />
+      <xs:enumeration value="SCREEN" />
+      <xs:enumeration value="SEARCH" />
+      <xs:enumeration value="SETTINGS" />
+      <xs:enumeration value="SIDEBAND" />
+      <xs:enumeration value="SIDEBAR_LEFT" />
+      <xs:enumeration value="SIDEBAR_RIGHT" />
+      <xs:enumeration value="SIGNAL" />
+      <xs:enumeration value="STAR" />
+      <xs:enumeration value="TIME" />
+      <xs:enumeration value="TRIGGER" />
+      <xs:enumeration value="UNDO" />
+      <xs:enumeration value="UPLOAD" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--SIMPLE TYPES END-->
+</xs:schema>

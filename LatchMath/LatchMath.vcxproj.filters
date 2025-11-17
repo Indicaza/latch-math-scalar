@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Generated\TypeLib_i.c">
+      <Filter>dewesoft_internal\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\settings\settings_window.cpp">
+      <Filter>ui\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\setup\setup_window.cpp">
+      <Filter>ui\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\plugin_bridge.cpp">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\registration\dllmain.cpp">
+      <Filter>dewesoft_internal\registration</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\registration\plugin_reg.cpp">
+      <Filter>dewesoft_internal\registration</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>dewesoft_internal</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\plugin_base.cpp">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\ui\setup_window_base.cpp">
+      <Filter>dewesoft_internal\interface\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\input_slots.cpp">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\input_channels.cpp">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\output_channels.cpp">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\channels.cpp">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\ui\settings_window_base.cpp">
+      <Filter>dewesoft_internal\interface\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\ui\settings\plugin_settings_window.cpp">
+      <Filter>dewesoft_internal\generated\ui\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\ui\setup\plugin_setup_window.cpp">
+      <Filter>dewesoft_internal\generated\ui\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\markers.cpp">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Generated\TypeLib_h.h">
+      <Filter>dewesoft_internal\generated</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\settings\settings_window.h">
+      <Filter>ui\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\setup\setup_window.h">
+      <Filter>ui\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\setup\setup_window.h">
+      <Filter>ui\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="dewesoft_internal\interface\enums.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\plugin_bridge.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\registration\plugin_reg.h">
+      <Filter>dewesoft_internal\registration</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>dewesoft_internal</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>dewesoft_internal</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\plugin_base.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\ui\setup_window_base.h">
+      <Filter>dewesoft_internal\interface\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\input_channels.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\input_slots.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\basic_types.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\output_channels.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\output_channel.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\version.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\channels.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\registration\plugin_props.h">
+      <Filter>dewesoft_internal\registration</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\ui\settings_window_base.h">
+      <Filter>dewesoft_internal\interface\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin_name_mappings.h">
+      <Filter>dewesoft_internal</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\macros.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="generated\ui\settings\plugin_settings_window.h">
+      <Filter>dewesoft_internal\generated\ui\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="generated\ui\setup\plugin_setup_window.h">
+      <Filter>dewesoft_internal\generated\ui\setup</Filter>
+    </ClInclude>
+    <ClInclude Include="dewesoft_internal\interface\markers.h">
+      <Filter>dewesoft_internal\interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="dewesoft_internal">
+      <UniqueIdentifier>{0474ec95-a92a-46b1-87f6-3b3ca63567e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dewesoft_internal\registration">
+      <UniqueIdentifier>{35bc5510-bdd8-4494-85b2-01d9e0cf6e52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dewesoft_internal\interface">
+      <UniqueIdentifier>{dd436f9f-1313-4fef-992c-ed77a51226be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{eab9c198-ed9e-48b9-b7c7-6e997b778eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui\settings">
+      <UniqueIdentifier>{4f8c21bf-d36a-45ae-8911-4f689e5c640e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui\setup">
+      <UniqueIdentifier>{245d7fa2-396d-4c24-9570-3bf8d6a213df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dewesoft_internal\generated">
+      <UniqueIdentifier>{10a47090-3669-4943-808c-99b0ebcec391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dewesoft_internal\interface\ui">
+      <UniqueIdentifier>{aa762abd-d2b4-4311-9ff6-405a24458ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dewesoft_internal\generated\ui">
+      <UniqueIdentifier>{e7ef8bd7-6a1c-4c9e-a800-b9fae2228e41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dewesoft_internal\generated\ui\setup">
+      <UniqueIdentifier>{fad158ee-8678-4c1e-bb7a-e8c86675e291}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dewesoft_internal\generated\ui\settings">
+      <UniqueIdentifier>{82533777-1deb-4848-bd6f-9725b598895c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PluginConfig.props">
+      <Filter>dewesoft_internal</Filter>
+    </None>
+    <None Include="LatchMath.def">
+      <Filter>dewesoft_internal</Filter>
+    </None>
+    <None Include="mui.targets" />
+    <None Include="compile_mui.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <MUI Include="ui\settings\settings_window.xml">
+      <Filter>ui\settings</Filter>
+    </MUI>
+    <MUI Include="ui\setup\setup_window.xml">
+      <Filter>ui\setup</Filter>
+    </MUI>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="MUI-1.1.xsd">
+      <Filter>dewesoft_internal</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc">
+      <Filter>dewesoft_internal</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="TypeLib.idl">
+      <Filter>dewesoft_internal</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="version.rci">
+      <Filter>dewesoft_internal</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

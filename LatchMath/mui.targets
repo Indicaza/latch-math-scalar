@@ -1,0 +1,11 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" TreatAsLocalProperty="OutDir">
+  <UsingTask AssemblyFile="compile_mui.dll" TaskName="compile_mui.AddMuiToResources" />
+  <PropertyGroup>
+    <MuiResourceFile>$(ProjectDir)generated\mui.rc</MuiResourceFile>
+  </PropertyGroup>
+  <!-- Inputs="@(MUI)" Outputs="$(MuiResourceFile)" -->
+  <Target Name="BuildMUI" BeforeTargets="BeforeResourceCompile">
+    <Message Text="Embedding MUI resources." Importance="high"/>
+    <AddMuiToResources Files="@(MUI)" OutputFile="$(MuiResourceFile)"/>
+  </Target>
+</Project>

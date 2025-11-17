@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="https://mui.dewesoft.com/schema/1.1" Name="settingsWindow" Background="#ffffff">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="90"/>
+      <ColumnDefinition Width="150"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="22"/>
+    </Grid.RowDefinitions>
+    
+    <TextBlock Text="Global offset"/>
+    <TextBox Placeholder="" Name="globalOffsetEdit" Text="0" ValidateType="Integer"/>
+  </Grid>
+</Window>

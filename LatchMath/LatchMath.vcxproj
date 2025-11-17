@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>AtlProj</Keyword>
+    <ProjectGuid>{C2A25EC6-7AEE-4C93-89D8-13D13386A8C7}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommand>$(DEWESOFT_EXE_X86)\Dewesoft.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>/enableplugin:{$(ClassGuid)}</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerCommand>$(DEWESOFT_EXE_X86)\Dewesoft.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>/enableplugin:{$(ClassGuid)}</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>$(DEWESOFT_EXE_X64)\Dewesoft.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>/enableplugin:{$(ClassGuid)}</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommand>$(DEWESOFT_EXE_X64)\Dewesoft.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>/enableplugin:{$(ClassGuid)}</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+    <Import Project="PluginConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+    <Import Project="PluginConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+    <Import Project="PluginConfig.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+    <Import Project="PluginConfig.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <!-- Makes the TypeScript compilation task a no-op -->
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(DEWESOFT_EXE_X86)\Addons\LatchMath\</OutDir>
+    <IntDir>bin\$(Platform)\$(Configuration)\Intermediate\</IntDir>
+    <IncludePath>$(DCOM_LIB_ROOT)\include;$(MUI3_LIB_ROOT)\include;$(ProjectDir)dewesoft_internal\;$(ProjectDir)dewesoft_internal\registration;$(ProjectDir)\Generated;$(SolutionDir)\$(ProjectName)Lib\;$(COMMON_LIB_ROOT)\external\libxml\include\;$(ProjectDir);$(COMMON_LIB_ROOT)\include\;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(DEWESOFT_EXE_X86)\;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>$(DCOM_LIB_ROOT)\lib;$(MUI3_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\external\libxml\lib\lib32;$(LibraryPath)</LibraryPath>
+    <TargetExt>.prc</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(DEWESOFT_EXE_X86)\Addons\LatchMath\</OutDir>
+    <IntDir>bin\$(Platform)\$(Configuration)\Intermediate\</IntDir>
+    <IncludePath>$(DCOM_LIB_ROOT)\include;$(MUI3_LIB_ROOT)\include;$(ProjectDir)dewesoft_internal\;$(ProjectDir)dewesoft_internal\registration;$(ProjectDir)\Generated;$(SolutionDir)\$(ProjectName)Lib\;$(COMMON_LIB_ROOT)\external\libxml\include\;$(ProjectDir);$(COMMON_LIB_ROOT)\include\;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(DEWESOFT_EXE_X86)\;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>$(DCOM_LIB_ROOT)\lib;$(MUI3_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\external\libxml\lib\lib32;$(LibraryPath)</LibraryPath>
+    <TargetExt>.prc</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(DEWESOFT_EXE_X64)\Addons64\LatchMath\</OutDir>
+    <IntDir>bin\$(Platform)\$(Configuration)\Intermediate\</IntDir>
+    <IncludePath>$(DCOM_LIB_ROOT)\include;$(MUI3_LIB_ROOT)\include;$(ProjectDir)dewesoft_internal\;$(ProjectDir)dewesoft_internal\registration;$(ProjectDir)\Generated;$(SolutionDir)\$(ProjectName)Lib\;$(COMMON_LIB_ROOT)\external\libxml\include\;$(ProjectDir);$(COMMON_LIB_ROOT)\include\;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(DEWESOFT_EXE_X64)\;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>$(DCOM_LIB_ROOT)\lib;$(MUI3_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\external\libxml\lib\lib64;$(LibraryPath)</LibraryPath>
+    <TargetExt>.prc</TargetExt>
+    <TargetName>$(ProjectName)64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(DEWESOFT_EXE_X64)\Addons64\LatchMath\</OutDir>
+    <IntDir>bin\$(Platform)\$(Configuration)\Intermediate\</IntDir>
+    <IncludePath>$(DCOM_LIB_ROOT)\include;$(MUI3_LIB_ROOT)\include;$(ProjectDir)dewesoft_internal\;$(ProjectDir)dewesoft_internal\registration;$(ProjectDir)\Generated;$(SolutionDir)\$(ProjectName)Lib\;$(COMMON_LIB_ROOT)\external\libxml\include\;$(ProjectDir);$(COMMON_LIB_ROOT)\include\;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(DEWESOFT_EXE_X64)\;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>$(DCOM_LIB_ROOT)\lib;$(MUI3_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\lib;$(COMMON_LIB_ROOT)\external\libxml\lib\lib64;$(LibraryPath)</LibraryPath>
+    <TargetExt>.prc</TargetExt>
+    <TargetName>$(ProjectName)64</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DSRT_SKIP_LIB_LINK;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;PLUGIN_MUI=170109;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>TypeLib.tlb</TypeLibraryName>
+      <OutputDirectory>$(ProjectDir)\Generated</OutputDirectory>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(IntDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>serialization_debug.lib;dcom_utils_debug.lib;comctl32.lib;dsrtcoretypes-32-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)$(ProjectName).def</ModuleDefinitionFile>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <DelayLoadDLLs>dsrtcoretypes-32-1.dll</DelayLoadDLLs>
+      <ShowProgress>NotSet</ShowProgress>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <Optimization>Full</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_NDEBUG;NDEBUG;_WINDOWS;_USRDLL;DSRT_SKIP_LIB_LINK;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;PLUGIN_MUI=170109;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>TypeLib.tlb</TypeLibraryName>
+      <OutputDirectory>$(ProjectDir)\Generated</OutputDirectory>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(IntDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>serialization.lib;dcom_utils.lib;Comctl32.lib;dsrtcoretypes-32-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)$(ProjectName).def</ModuleDefinitionFile>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <DelayLoadDLLs>dsrtcoretypes-32-1.dll</DelayLoadDLLs>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DSRT_SKIP_LIB_LINK;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;PLUGIN_MUI=170109;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <OmitFramePointers>false</OmitFramePointers>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>TypeLib.tlb</TypeLibraryName>
+      <OutputDirectory>$(ProjectDir)\Generated</OutputDirectory>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(IntDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>serialization64_debug.lib;dcom_utils64_debug.lib;comctl32.lib;dsrtcoretypes-64-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)$(ProjectName).def</ModuleDefinitionFile>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <DelayLoadDLLs>dsrtcoretypes-64-1.dll</DelayLoadDLLs>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <Optimization>Full</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_NDEBUG;NDEBUG;_WINDOWS;_USRDLL;DSRT_SKIP_LIB_LINK;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;PLUGIN_MUI=170109;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <OmitFramePointers>false</OmitFramePointers>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>TypeLib.tlb</TypeLibraryName>
+      <OutputDirectory>$(ProjectDir)\Generated</OutputDirectory>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(IntDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>serialization64.lib;dcom_utils64.lib;Comctl32.lib;dsrtcoretypes-64-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)$(ProjectName).def</ModuleDefinitionFile>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <DelayLoadDLLs>dsrtcoretypes-64-1.dll</DelayLoadDLLs>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="dewesoft_internal\interface\channels.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\input_channels.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\input_slots.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\markers.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\output_channels.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\plugin_base.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\ui\settings_window_base.cpp" />
+    <ClCompile Include="dewesoft_internal\interface\ui\setup_window_base.cpp" />
+    <ClCompile Include="generated\ui\settings\plugin_settings_window.cpp" />
+    <ClCompile Include="generated\ui\setup\plugin_setup_window.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="Generated\TypeLib_i.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\interface\plugin_bridge.cpp" />
+    <ClCompile Include="dewesoft_internal\registration\plugin_reg.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="dewesoft_internal\registration\dllmain.cpp" />
+    <ClCompile Include="ui\settings\settings_window.cpp" />
+    <ClCompile Include="ui\setup\setup_window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dewesoft_internal\interface\basic_types.h" />
+    <ClInclude Include="dewesoft_internal\interface\channels.h" />
+    <ClInclude Include="dewesoft_internal\interface\input_channels.h" />
+    <ClInclude Include="dewesoft_internal\interface\input_slots.h" />
+    <ClInclude Include="dewesoft_internal\interface\macros.h" />
+    <ClInclude Include="dewesoft_internal\interface\markers.h" />
+    <ClInclude Include="dewesoft_internal\interface\output_channels.h" />
+    <ClInclude Include="dewesoft_internal\interface\output_channel.h" />
+    <ClInclude Include="dewesoft_internal\interface\version.h" />
+    <ClInclude Include="dewesoft_internal\interface\plugin_base.h" />
+    <ClInclude Include="dewesoft_internal\interface\ui\settings_window_base.h" />
+    <ClInclude Include="dewesoft_internal\interface\ui\setup_window_base.h" />
+    <ClInclude Include="dewesoft_internal\registration\plugin_props.h" />
+    <ClInclude Include="generated\ui\settings\plugin_settings_window.h" />
+    <ClInclude Include="generated\ui\setup\plugin_setup_window.h" />
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="Generated\TypeLib_h.h" />
+    <ClInclude Include="dewesoft_internal\interface\enums.h" />
+    <ClInclude Include="dewesoft_internal\registration\plugin_reg.h" />
+    <ClInclude Include="dewesoft_internal\interface\plugin_bridge.h" />
+    <ClInclude Include="plugin_name_mappings.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="ui\settings\settings_window.h" />
+    <ClInclude Include="ui\setup\setup_window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="TypeLib.idl">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CLASS_GUID=$(ClassGuid);_CLASS_CONTEXT_GUID=$(ClassContextGuid);_CLASS_FRAME_GUID=$(ClassFrameGuid);_CLASS_SETTINGS_FRAME_GUID=$(ClassSettingsFrameGuid);_LIB_GUID=$(TypeLibraryGuid);_LIB_NAME=$(PluginName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_CLASS_GUID=$(ClassGuid);_CLASS_CONTEXT_GUID=$(ClassContextGuid);_CLASS_FRAME_GUID=$(ClassFrameGuid);_CLASS_SETTINGS_FRAME_GUID=$(ClassSettingsFrameGuid);_LIB_GUID=$(TypeLibraryGuid);_LIB_NAME=$(PluginName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_CLASS_GUID=$(ClassGuid);_CLASS_CONTEXT_GUID=$(ClassContextGuid);_CLASS_FRAME_GUID=$(ClassFrameGuid);_CLASS_SETTINGS_FRAME_GUID=$(ClassSettingsFrameGuid);_LIB_GUID=$(TypeLibraryGuid);_LIB_NAME=$(PluginName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_CLASS_GUID=$(ClassGuid);_CLASS_CONTEXT_GUID=$(ClassContextGuid);_CLASS_FRAME_GUID=$(ClassFrameGuid);_CLASS_SETTINGS_FRAME_GUID=$(ClassSettingsFrameGuid);_LIB_GUID=$(TypeLibraryGuid);_LIB_NAME=$(PluginName);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="version.rci">
+      <FileType>Document</FileType>
+      <!-- /P preprocess -->
+      <!-- /C keep comments -->
+      <!-- /Fi set preprocessed file name -->
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl /D_DEBUG /D_FILE_DESC="$(PluginDisplayName)" /D_INTERNAL_NAME="$(PluginName)" /D_VER_MAJOR="$(PluginVersionMajor)" /D_VER_MINOR="$(PluginVersionMinor)" /D_VER_RELEASE="$(PluginVersionRelease)" /D_COPYRIGHT="$(PluginCopyright)" /P /C /Fi"generated\%(FileName).rc" "%(FileName).rci"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">generated\%(FileName).rc</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl /D_FILE_DESC="$(PluginDisplayName)" /D_INTERNAL_NAME="$(PluginName)" /D_VER_MAJOR="$(PluginVersionMajor)" /D_VER_MINOR="$(PluginVersionMinor)" /D_VER_RELEASE="$(PluginVersionRelease)" /D_COPYRIGHT="$(PluginCopyright)" /P /C /Fi"generated\%(FileName).rc" "%(FileName).rci"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">generated\%(FileName).rc</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl /D_DEBUG /D_FILE_DESC="$(PluginDisplayName)" /D_INTERNAL_NAME="$(PluginName)" /D_VER_MAJOR="$(PluginVersionMajor)" /D_VER_MINOR="$(PluginVersionMinor)" /D_VER_RELEASE="$(PluginVersionRelease)" /D_COPYRIGHT="$(PluginCopyright)" /P /C /Fi"generated\%(FileName).rc" "%(FileName).rci"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">generated\%(FileName).rc</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl /D_FILE_DESC="$(PluginDisplayName)" /D_INTERNAL_NAME="$(PluginName)" /D_VER_MAJOR="$(PluginVersionMajor)" /D_VER_MINOR="$(PluginVersionMinor)" /D_VER_RELEASE="$(PluginVersionRelease)" /D_COPYRIGHT="$(PluginCopyright)" /P /C /Fi"generated\%(FileName).rc" "%(FileName).rci"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">generated\%(FileName).rc</Outputs>
+      <Message>Embedding version info to resources.</Message>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PluginConfig.props" />
+    <None Include="LatchMath.def" />
+    <None Include="mui.targets" />
+    <None Include="compile_mui.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <MUI Include="ui\setup\setup_window.xml">
+      <SubType>Designer</SubType>
+    </MUI>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)mui_ctype.xml" />
+    <MUI Include="ui\settings\settings_window.xml">
+      <FileType>XML</FileType>
+      <SubType>Designer</SubType>
+    </MUI>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="MUI-1.1.xsd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="mui.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="LatchMath.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

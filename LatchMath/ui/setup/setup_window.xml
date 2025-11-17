@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="https://mui.dewesoft.com/schema/1.1">
+
+	<CaptionPanel Title="Latch criteria settings">
+		<Grid PaddingLeft="5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="170"/>
+				<ColumnDefinition Width="100%"/>
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="10"/>
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="100%"/>
+			</Grid.RowDefinitions>
+
+			<Label Grid.Column="0" Grid.Row="0" Text="Criteria limit" />
+			<TextBox Grid.Column="0" Grid.Row="1" Name="latchCriteriaEdit" Text="0" />
+
+			<Label Grid.Column="0" Grid.Row="3" Text="Edge type" />
+			<ComboBox Grid.Column="0" Grid.Row="4" Name="edgeTypeCBox" />
+
+		</Grid>
+	</CaptionPanel>
+
+</Window>

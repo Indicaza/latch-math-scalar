@@ -1,0 +1,52 @@
+// IDL file
+
+#define CONC(a, b) a##b
+#define CONC1(a, b) CONC(a, b)
+#define LIBNAME CONC1(_LIB_NAME, Lib)
+
+import "oaidl.idl";
+import "ocidl.idl";
+	
+[
+	uuid(_LIB_GUID),
+	version(1.0),
+] 
+
+library LIBNAME
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("Dewesoft.exe");
+
+    [
+        uuid(_CLASS_GUID),
+    ]
+    coclass Module
+    {
+        [default] interface IDewePlugin;
+    };
+
+    [
+        uuid(_CLASS_CONTEXT_GUID),
+    ]
+    coclass Context
+    {
+        [default] interface IDewePlugin;
+    };
+
+    [
+        uuid(_CLASS_FRAME_GUID),
+    ]
+    coclass SetupFrame
+    {
+        [default] interface IDewePlugin;
+    };
+
+    [
+        uuid(_CLASS_SETTINGS_FRAME_GUID),
+    ]
+    coclass SettingsFrame
+    {
+        [default] interface IDewePlugin;
+    };
+};
