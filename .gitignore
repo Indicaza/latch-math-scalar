@@ -1,0 +1,36 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.opensdf
+*.sdf
+*.cachefile
+*.pdb
+*.ilk
+
+# Build outputs
+x64/
+Debug/
+Release/
+bin/
+obj/
+ipch/
+*.dll
+*.exe
+
+# Dewesoft plugin artifacts
+*.prc
+*.dcu
+*.bsc
+
+# CMake (if used)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Logs
+*.log
+
+# Misc
+Thumbs.db
+desktop.ini
