@@ -18,15 +18,17 @@ public:
     void calculate() override;
     void updateSetup(Setup& setup) override;
 
-    ScalarInputChannel inputChannelIn;
-    ScalarInputChannel criteriaChannelIn;
-
     double criteriaLimit = 0;
     edgeTypes edgeType = RisingEdge;
 
+    ScalarInputChannel inputChannelIn;
+    ScalarInputChannel criteriaChannelIn;
     ScalarOutputChannel outputChannel;
 };
 
 class LatchMathSharedModule : public Dewesoft::Processing::Api::Advanced::SharedModule
 {
+public:
+    void connectInputChannels(InputChannelSlots& slots) override;
+    ScalarInputChannel criteriaChannelShared;
 };

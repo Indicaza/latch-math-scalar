@@ -3,8 +3,11 @@
 
 	<CaptionPanel Title="Latch criteria settings">
 		<Grid PaddingLeft="5">
+
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="170"/>
+				<ColumnDefinition Width="140"/>
+				<ColumnDefinition Width="30"/>
+				<ColumnDefinition Width="120"/>
 				<ColumnDefinition Width="100%"/>
 			</Grid.ColumnDefinitions>
 
@@ -17,10 +20,13 @@
 				<RowDefinition Height="100%"/>
 			</Grid.RowDefinitions>
 
-			<Label Grid.Column="0" Grid.Row="0" Text="Criteria limit" />
-			<TextBox Grid.Column="0" Grid.Row="1" Name="latchCriteriaEdit" Text="0" />
+			<Label    Grid.Column="0" Grid.Row="0" Text="Criteria channel"/>
+			<ComboBox Grid.Column="0" Grid.Row="1" Name="criteriaChannelCBox" />
 
-			<Label Grid.Column="0" Grid.Row="3" Text="Edge type" />
+			<Label    Grid.Column="2" Grid.Row="0" Text="Criteria limit" />
+			<TextBox  Grid.Column="2" Grid.Row="1" Name="latchCriteriaEdit" Text="0" />
+
+			<Label    Grid.Column="0" Grid.Row="3" Text="Edge type" />
 			<ComboBox Grid.Column="0" Grid.Row="4" Name="edgeTypeCBox" />
 
 		</Grid>

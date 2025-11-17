@@ -12,4 +12,6 @@ private:
     void onLatchCriteriaEditChanged(Dewesoft::MUI::TextBox& editBox, Dewesoft::MUI::EventArgs& args);
 
     void onEdgeTypeCBoxChanged(Dewesoft::MUI::ComboBox& cBox, Dewesoft::MUI::EventArgs& args);
+
+    void onCriteriaChannelCBoxChanged(Dewesoft::MUI::ComboBox& cBox, Dewesoft::MUI::EventArgs& args);
 };

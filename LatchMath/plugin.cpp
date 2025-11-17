@@ -3,19 +3,35 @@
 
 using namespace Dewesoft::Processing::Api::Advanced;
 
+// -------------------- Properties --------------------
+
 void LatchMathModule::getPluginProperties(PluginProperties& props)
 {
     props.name = "Latch math - scalar";
     props.description = "Pro Tutorial example.";
     props.pluginType = PluginType::application;
     props.hasProjectSettings = false;
-    props.inputSlotsMode = InputSlotsMode::multiple;
+
+    // Each selected input channel becomes a Module instance
+    props.inputSlotsMode = InputSlotsMode::single;
 }
+
+// -------------------- SharedModule --------------------
+
+void LatchMathSharedModule::connectInputChannels(InputChannelSlots& slots)
+{
+    slots.connectChannel("Criteria channel", &criteriaChannelShared, ChannelTimebase::Synchronous);
+}
+
+// -------------------- Module --------------------
 
 void LatchMathModule::connectInputChannels(InputChannelSlots& slots)
 {
+    // Each Module gets one input channel
     slots.connectChannel("Input channel", &inputChannelIn, ChannelTimebase::Synchronous);
-    slots.connectChannel("Criteria channel", &criteriaChannelIn, ChannelTimebase::Synchronous);
+
+    // This Module REUSES the shared criteria channel
+    slots.useSharedModuleChannel("Criteria channel", &criteriaChannelIn);
 }
 
 void LatchMathModule::mountChannels(OutputChannels& fixed, OutputChannels& dynamic)
