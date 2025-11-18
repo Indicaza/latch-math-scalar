@@ -30,5 +30,7 @@ class LatchMathSharedModule : public Dewesoft::Processing::Api::Advanced::Shared
 {
 public:
     void connectInputChannels(InputChannelSlots& slots) override;
+
+private:
     ScalarInputChannel criteriaChannelShared;
 };
